@@ -125,4 +125,17 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionCachetest()
+    {
+        /*$cached_value = Yii::$app->cache->getOrSet('vibha-cached-value', function () {
+            return 'From cache';
+        });*/
+
+        Yii::$app->cache->set('vibha-cached-value', 'New cache data');
+
+        $cached_value = Yii::$app->cache->get('vibha-cached-value');
+
+        return $this->render('cachetest', ['cached_value' =>  $cached_value]);
+    }
 }
