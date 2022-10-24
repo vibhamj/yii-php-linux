@@ -142,9 +142,21 @@ class SiteController extends Controller
 
     public function actionDbtest()
     {
-        $countries = Country::find();
+        $query = Country::find();
+
+        $countries = $query->orderBy('name')->all();
+
         return $this->render('dbtest', [
             'countries' => $countries,
         ]);
     }
+
+    /*public function actionInsertdb()
+    {
+        $model = new Country;
+        $model->name = 'India';
+        $model.save();
+
+        $this->render('cachetest');
+    }*/
 }
