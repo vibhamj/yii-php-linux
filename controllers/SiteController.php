@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Country;
 
 class SiteController extends Controller
 {
@@ -137,5 +138,13 @@ class SiteController extends Controller
         $cached_value = Yii::$app->cache->get('vibha-cached-value');
 
         return $this->render('cachetest', ['cached_value' =>  $cached_value]);
+    }
+
+    public function actionDbtest()
+    {
+        $countries = Country::find();
+        return $this->render('dbtest', [
+            'countries' => $countries,
+        ]);
     }
 }
